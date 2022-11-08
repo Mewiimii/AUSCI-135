@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct 12 17:02:55 2022
+Created on Wed Oct 12 16:02:55 2022
 
-@author: Kristian Berg
 """
 from tkinter import*
 from tkinter.messagebox import showinfo 
 global cpu
 def setCPU():
-    global cpuf
+    global cpu
     if playerTwoCharValue.get() == '1':
         cpu = 1
     else:
@@ -28,21 +27,21 @@ def playerOneO():
     
 
 def playerTwoX():
-    selection = 'CPU starts: True'
-    playerTwoCharLabel.config(text = selection)
+    #selection = 'CPU starts: True'
+    #playerTwoCharLabel.config(text = selection)
     playerOneCharR1.config(state = NORMAL)
     playerOneCharR2.config(state = NORMAL)
 
 def playerTwoO():
-    selection = 'CPU starts: False'
-    playerTwoCharLabel.config(text = selection)
+    #selection = 'CPU starts: False'
+    #playerTwoCharLabel.config(text = selection)
     playerOneCharR1.config(state = NORMAL)
     playerOneCharR2.config(state = NORMAL)
 
 
 def twoPlayerGame():
-    selection = gameModeValue.get()+' Game'
-    gameModeLabel.config(text = selection)
+    #selection = gameModeValue.get()+' Game'
+    #gameModeLabel.config(text = selection)
     difficultyR1.config(state = DISABLED)
     difficultyR2.config(state = DISABLED)
     difficultyR3.config(state = DISABLED)
@@ -52,8 +51,8 @@ def twoPlayerGame():
     
 
 def onePlayerGame():
-    selection = gameModeValue.get()+' Game'
-    gameModeLabel.config(text = selection)
+    #selection = gameModeValue.get()+' Game'
+    #gameModeLabel.config(text = selection)
     difficultyR1.config(state = NORMAL)
     difficultyR2.config(state = NORMAL)
     difficultyR3.config(state = NORMAL)
@@ -62,7 +61,7 @@ def onePlayerGame():
 
 def difficulty():
     selection = 'The Difficulty Is Set To '+difficultyValue.get()
-    difficultyLabel.config(text = selection)
+    #difficultyLabel.config(text = selection)
 
 def startTwoPlayerGame():
     # Sets initial move
@@ -1347,9 +1346,23 @@ def startGame():
             
 
 menu = Tk()
+menu.title('Menu')
 
-playerOneCharFrame = Frame(menu,
-                    height = 200, width = 200, bg='red')
+menuCanvas = Canvas(menu, height=500, width=500, highlightthickness=0, bg = '#424242')
+menuCanvas.pack(fill='both', expand = True)
+#change to proper file grabs
+onePlayerBox = PhotoImage(file='oneplayerbox.png')
+twoPlayerBox = PhotoImage(file='twoplayerbox.png')
+easyBox = PhotoImage(file='easybox.png')
+mediumBox = PhotoImage(file='mediumbox.png')
+hardBox = PhotoImage(file='hardbox.png')
+startBox = PhotoImage(file='startbox.png')
+xPic = PhotoImage(file='xpic.png') #0f0f0f
+oPic = PhotoImage(file='opic.png')
+
+
+playerOneCharFrame = Frame(menuCanvas,
+                    height = 200, width = 200, bg='#424242')
 
 playerOneCharFrame.pack(side = LEFT)
 
@@ -1357,51 +1370,57 @@ playerOneCharValue = StringVar()
 
 playerOneCharValue.set('X')
 
-playerOneCharR1 =Radiobutton(playerOneCharFrame, text = 'X',
+playerOneCharR1 =Radiobutton(playerOneCharFrame, image = xPic,
                              variable = playerOneCharValue,
-                             value = 'X', command=playerOneX, bg = 'red')
+                             value = 'X', command=playerOneX, bg = '#424242')
 
-playerOneCharR2 =Radiobutton(playerOneCharFrame, text = 'O',
+playerOneCharR2 =Radiobutton(playerOneCharFrame, image = oPic,
                              variable = playerOneCharValue,
-                             value = 'O', command = playerOneO, bg = 'red')
+                             value = 'O', command = playerOneO, bg = '#424242')
 
 
 playerOneCharR1.pack()
 playerOneCharR2.pack()
 
 
-playerOneCharLabel = Label(playerOneCharFrame, text = ' ', bg = 'red')
+playerOneCharLabel = Label(playerOneCharFrame, text = ' ', bg = '#424242')
 playerOneCharLabel.pack()
 playerOneCharLabel.config(text = 'Starting player is X')
 
-playerTwoCharFrame = Frame(menu,
-                    height = 200, width = 200, bg='orange')
+playerTwoCharFrame = Frame(menuCanvas,
+                    height = 200, width = 200, bg='#424242')
+
+
+playerTwoCharLabel = Label(playerTwoCharFrame, text = ' ', bg = '#424242')
+playerTwoCharLabel.pack()
+playerTwoCharLabel.config(text = 'Choose who goes first:')
+
 
 playerTwoCharFrame.pack(side = RIGHT)
 
 playerTwoCharValue = StringVar()
 
-playerTwoCharValue.set(1)
+playerTwoCharValue.set('True')
 
-playerTwoCharR1 =Radiobutton(playerTwoCharFrame, text = 'True',
+playerTwoCharR1 =Radiobutton(playerTwoCharFrame, text = 'Computer Starts',
                              variable = playerTwoCharValue,
-                             value = 1, command=playerTwoX, bg = 'orange')
+                             value = 1, command=playerTwoX, bg = '#424242')
 
-playerTwoCharR2 =Radiobutton(playerTwoCharFrame, text = 'False',
+playerTwoCharR2 =Radiobutton(playerTwoCharFrame, text = 'Player Starts',
                              variable = playerTwoCharValue,
-                             value = 0, command = playerTwoO, bg = 'orange')
+                             value = 0, command = playerTwoO, bg = '#424242')
 
 
 playerTwoCharR1.pack()
 playerTwoCharR2.pack()
 
 
-playerTwoCharLabel = Label(playerTwoCharFrame, text = ' ', bg = 'orange')
-playerTwoCharLabel.pack()
-playerTwoCharLabel.config(text = 'CPU starts: ')
+gameModeFrame = Frame(menuCanvas,
+                      height = 200, width = 200, bg = '#424242')
 
-gameModeFrame = Frame(menu,
-                      height = 200, width = 200, bg = 'green')
+gameModeLabel = Label(gameModeFrame, text = ' ', bg = '#424242')
+gameModeLabel.pack()
+gameModeLabel.config(text = 'How many players?')
 
 gameModeFrame.pack(side = TOP)
 
@@ -1409,21 +1428,22 @@ gameModeValue = StringVar()
 
 gameModeValue.set('One Player')
 
-gameModeR1 = Radiobutton(gameModeFrame, text = 'One Player',
+gameModeR1 = Radiobutton(gameModeFrame, image = onePlayerBox,
                          variable = gameModeValue, value = 'One Player',
-                         command = onePlayerGame, bg = 'green')
-gameModeR2 = Radiobutton(gameModeFrame, text = 'Two Player',
+                         command = onePlayerGame, bg = '#424242')
+gameModeR2 = Radiobutton(gameModeFrame, image = twoPlayerBox,
                          variable = gameModeValue, value = 'Two Player',
-                         command = twoPlayerGame, bg = 'green')
+                         command = twoPlayerGame, bg = '#424242')
 gameModeR1.pack()
 gameModeR2.pack()
 
-gameModeLabel = Label(gameModeFrame, text = ' ', bg = 'green')
-gameModeLabel.pack()
-gameModeLabel.config(text = 'One Player Game')
 
-difficultyFrame = Frame(menu,
-                        height = 200, width = 200, bg = 'blue')
+difficultyFrame = Frame(menuCanvas,
+                        height = 200, width = 200, bg = '#424242')
+
+difficultyLabel = Label(difficultyFrame, text = ' ', bg = '#424242')
+difficultyLabel.pack()
+difficultyLabel.config(text = 'Difficulty:')
 
 difficultyFrame.pack(side = BOTTOM)
 
@@ -1431,16 +1451,27 @@ difficultyValue = StringVar()
 
 difficultyValue.set('Easy')
 
-difficultyR1=Radiobutton(difficultyFrame, text = 'Easy',
+difficultyR1=Radiobutton(difficultyFrame, image = easyBox,
                          variable = difficultyValue,
-                         value = 'Easy', command=difficulty, bg = 'blue')
-difficultyR2=Radiobutton(difficultyFrame, text = 'Medium',
+                         value = 'Easy', command=difficulty, bg = '#424242')
+difficultyR2=Radiobutton(difficultyFrame, image = mediumBox,
                          variable = difficultyValue,
-                         value = 'Medium', command=difficulty, bg = 'blue')
-difficultyR3=Radiobutton(difficultyFrame, text = 'Hard',
+                         value = 'Medium', command=difficulty, bg = '#424242')
+difficultyR3=Radiobutton(difficultyFrame, image = hardBox,
                          variable = difficultyValue,
-                         value = 'Hard', command=difficulty, bg = 'blue')
+                         value = 'Hard', command=difficulty, bg = '#424242')
 
 difficultyR1.pack()
 difficultyR2.pack()
 difficultyR3.pack()
+
+
+startGameB = Button(menuCanvas, image = startBox, bd = 0, command=startGame, bg = '#424242', activebackground= '#424242')
+    
+              
+startGameB.pack()
+
+menu.mainloop()
+
+
+
