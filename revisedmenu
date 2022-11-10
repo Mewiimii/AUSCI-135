@@ -1374,7 +1374,6 @@ startBox = PhotoImage(file='startbox.png')
 xPic = PhotoImage(file='xpic.png') #0f0f0f
 oPic = PhotoImage(file='opic.png')
 backgroundPic = PhotoImage(file='background.png')
-testPic = PhotoImage(file='test.png')
 computerStartsPic = PhotoImage(file='computerstarts.png')
 playerStartsPic = PhotoImage(file='playerstarts.png')
 
