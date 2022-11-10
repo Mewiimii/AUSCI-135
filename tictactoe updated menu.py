@@ -33,7 +33,7 @@ def twoPlayerGame():
     difficultyValue.set('none')
     nameTwo.config(state = NORMAL)
     nameTwo.delete(0, 50)
-    nameTwo.insert(0, 'Player 2 name here')
+    nameTwo.insert(0, 'Player 2')
 
     
 
@@ -1462,12 +1462,12 @@ difficultyR3.pack()
 
 
 # sets the entry widgets for player names 
-nameOne = Entry(menuCanvas)
-nameOne.insert(0,'Player 1 name here')
+nameOne = Entry(menuCanvas, width = 13)
+nameOne.insert(0,'Player 1')
 nameOne.pack()
 nameOne.place(x=200,y=90)
 
-nameTwo = Entry(menuCanvas)
+nameTwo = Entry(menuCanvas, width = 13)
 nameTwo.insert(0, 'CPU')
 nameTwo.pack()
 nameTwo.place(x=200,y=115)
