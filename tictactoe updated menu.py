@@ -7,6 +7,16 @@ from tkinter import*
 from tkinter.messagebox import showinfo 
 global cpu
 def setCPU():
+    """
+    This function determines if the player or CPU goes first in a one player game
+    Parameters
+    ----------
+    None
+    Returns
+    -------
+    None
+    """
+    # if the player two value is set to one then cpu equals 1 if not cpu equals zero
     global cpu
     if playerTwoCharValue.get() == '1':
         cpu = 1
@@ -25,12 +35,24 @@ def playerTwoO():
 
 
 def twoPlayerGame():
+    """
+    This function allows for the user to access only the options for a two player game in the menu
+    Parameters
+    ----------
+    None
+    Returns
+    -------
+    None
+    """
+    # when the function is called it disables five radio buttons
     difficultyR1.config(state = DISABLED)
     difficultyR2.config(state = DISABLED)
     difficultyR3.config(state = DISABLED)
     playerTwoCharR1.config(state = DISABLED)
     playerTwoCharR2.config(state =  DISABLED)
+    # ensure no difficulty value is selected
     difficultyValue.set('none')
+    # allows the input for player twos name to be edited and sets it to the deafult
     nameTwo.config(state = NORMAL)
     nameTwo.delete(0, 50)
     nameTwo.insert(0, 'Player 2')
@@ -38,14 +60,27 @@ def twoPlayerGame():
     
 
 def onePlayerGame():
+    """
+    This function allows for the user to access only the options for a one playerr game in the menu
+    Parameters
+    ----------
+    None
+    Returns
+    -------
+    None
+    """
+    # when the function is called it reverts the state of five radio buttons back to normal
     difficultyR1.config(state = NORMAL)
     difficultyR2.config(state = NORMAL)
     difficultyR3.config(state = NORMAL)
     playerTwoCharR1.config(state = NORMAL)
     playerTwoCharR2.config(state = NORMAL)
+    # makes the deafult difficulty easy
     difficultyValue.set('Easy')
+    # deletes what is in player twos name and replaces it with CPU
     nameTwo.delete(0, 50)
     nameTwo.insert(0, 'CPU')
+    # makes nameTwo unchangable
     nameTwo.config(state = DISABLED)
 
 
