@@ -3,7 +3,8 @@
 Created on Wed Oct 12 16:02:55 2022
 
 """
-from tkinter import*
+from tkinter import Tk, Canvas, BOTH, PhotoImage, Label, Frame
+from tkinter import StringVar, Radiobutton, Entry, DISABLED, Button, NORMAL
 from tkinter.messagebox import showinfo 
 global cpu
 def setCPU():
