@@ -843,16 +843,16 @@ def startMedGame():
         med.mainloop()
 
 def startHardGame():
-        """
-        This function allows for a one player game on hard to be played. It creates the game board, checks for a winner, displays a
-        winning/draw message and has a restart button
-        Parameters
-        ----------
-        None
-        Returns
-        -------
-        None
-        """
+    """
+    This function allows for a one player game on hard to be played. It creates the game board, checks for a winner, displays a
+    winning/draw message and has a restart button
+    Parameters
+    ----------
+    None
+    Returns
+    -------
+    None
+    """
     # CPU start variable
     global cpu
     # Sets initial move   
