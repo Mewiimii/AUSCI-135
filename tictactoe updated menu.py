@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct 12 16:02:55 202 2
+Created on Wed Oct 12 16:02:55 2022
 
 """
 from tkinter import*
@@ -61,7 +61,7 @@ def twoPlayerGame():
 
 def onePlayerGame():
     """
-    This function allows for the user to access only the options for a one playerr game in the menu
+    This function allows for the user to access only the options for a one player game in the menu
     Parameters
     ----------
     None
@@ -87,7 +87,17 @@ def onePlayerGame():
 
 
 def startTwoPlayerGame():
-    # Sets initial move
+        """
+        This function allows for a two player game to be played. It creates the game board, checks for a winner, displays a
+        winning/draw message and has a restart button
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        None
+        """
+        # Sets initial move
         global S
         global x
         x = S  
@@ -95,7 +105,15 @@ def startTwoPlayerGame():
         XOscr = [0,0]
         # Creates a new game      
         def TTTBRD():
-            
+            """
+            This function sets the game board back to its deafult empty state
+            Parameters
+            ----------
+            None
+            Returns 
+            -------
+            None
+            """            
             #Resets board/memory bank
             g = [['','',''],
                  ['','',''],
@@ -103,6 +121,16 @@ def startTwoPlayerGame():
             #Scans for a winner every move made, updates score and anounces a winner 
             # while displaying the current board    
             def winner():
+               """
+               This function determines whether someone has one the game. After each turn the board is scanned for
+               a winner and the score is updated accordingly
+               Parameters
+               ----------
+               None
+               Returns
+               -------
+               None
+               """
                XO = ['X','O']
                XOmsg = ['X Wins!', 'O Wins!']
                XOcol = [0,2] 
@@ -160,6 +188,17 @@ def startTwoPlayerGame():
             for r in range(3):
                 for c in range(3):
                     def move(r2=r,c2=c):
+                        """
+                        This function places either an x or an o on the button that is clicked in the game board
+                        and then scans for a winner
+                        Parameters
+                        ----------
+                        r2=r: integer, the row that the button is in
+                        c2=c: integer, the colunm the button is in
+                        Returns
+                        -------
+                        None
+                        """
                         global x
                         g[r2][c2] = x
                         bu = Label(pvp, 
@@ -209,6 +248,16 @@ def startTwoPlayerGame():
         pvp.mainloop()
 
 def startEasyGame():
+        """
+        This function allows for a one player game on easy to be played. It creates the game board, checks for a winner, displays a
+        winning/draw message and has a restart button
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        None
+        """
         # CPU start variable
         global cpu
         
@@ -219,8 +268,17 @@ def startEasyGame():
         x = S  
         # Sets and hold score
         XOscr = [0,0]
-        #switches player
+        
         def switch():
+            """
+            This switches if it is the players turn or the computers to create a new game
+            Parameters
+            ----------
+            None
+            Returns
+            -------
+            None
+            """
             global x
             if x == 'X':
                 x = "O"
@@ -228,6 +286,15 @@ def startEasyGame():
                 x = 'X'    
         # Creates a new game      
         def TTTBRD():
+            """
+            This function sets the game board back to its deafult empty state and determines which icon is assigned to each player
+            Parameters
+            ----------
+            None
+            Returns 
+            -------
+            None
+            """   
             #sets which player is which icon
             if cpu == 1 and S == 'X':
                 cpuXO = 'X'
@@ -246,6 +313,16 @@ def startEasyGame():
             #Scans for a winner every move made, updates score and anounces a winner 
             # or stalemate while displaying the current board 
             def winner():
+               """
+               This function determines whether someone has one the game. After each turn the board is scanned for
+               a winner and the score is upodated accordingly
+               Parameters
+               ----------
+               None
+               Returns
+               -------
+               None
+               """
                XO = ['X','O']
                XOmsg = ['X Wins!', 'O Wins!']
                XOcol = [0,2] 
@@ -300,6 +377,15 @@ def startEasyGame():
                                        TTTBRD()
             #checks if cpu goes first and plays            
             def FReasy():
+                """
+                This function determines if the computer is playing first and if it is, completes a move
+                Parameters
+                ----------
+                None
+                Returns
+                -------
+                None
+                """
                 if cpu == 1:
                     g[0][0] = cpuXO
                     bu = Label(easy, 
@@ -308,8 +394,17 @@ def startEasyGame():
                                )
                     bu.grid(row=0, column=0)
                 switch()
-            #checks if there is a winner
+            
             def winCheck():
+                """
+                This function checks to see if there is a winner and makes the varible won global
+                Parameters 
+                ----------
+                None
+                Returns
+                -------
+                None
+                """
                 global won
                 won = 0
                 XO = ['X','O']
@@ -324,8 +419,19 @@ def startEasyGame():
                          won = 1
                     if g[0][2] == XO[b] and g[1][1] == XO[b] and g[2][0] == XO[b]:
                         won = 1
-            #every cycle makes a play on the board if there is no winner.
+            
             def easymode():
+                """
+                This function is the logic behind the easy mode computers moves, every turn the function wincheck is called
+                and if there is no winer the computer makes a move using the instructions in the function
+                
+                Parameters
+                ----------
+                None
+                Returns
+                -------
+                None
+                """
                 global x
                 winCheck()
                 x = cpuXO
@@ -381,6 +487,15 @@ def startEasyGame():
         O.grid(row=4, column=2)
         # Restart button
         def restart():
+            """
+            This function resests the game board and allows for a new game to begin
+            Parameters
+            ----------
+            None
+            Returns
+            -------
+            None
+            """
             TTTBRD()
             switch()     
         R = Button(easy,
@@ -400,6 +515,16 @@ def startEasyGame():
         easy.mainloop()
 
 def startMedGame():
+        """
+        This function allows for a one player game on medium to be played. It creates the game board, checks for a winner, displays a
+        winning/draw message and has a restart button
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        None
+        """
         # CPU start variable
         global cpu
  
@@ -410,14 +535,33 @@ def startMedGame():
         x = S  
         # Sets and hold score
         XOscr = [0,0]
-        # Creates a new game
+        
         def switch():
+            """
+            This switches if it is the players turn or the computers to create a new game
+            Parameters
+            ----------
+            None
+            Returns
+            -------
+            None
+            """
             global x
             if x == 'X':
                 x = "O"
             else:
-                x = 'X'       
+                x = 'X'  
+                
         def TTTBRD():
+            """
+            This function sets the game board back to its deafult empty state and determines which icon is assigned to each player
+            Parameters
+            ----------
+            None
+            Returns 
+            -------
+            None
+            """
             #sets which player is which icon
             if cpu == 1 and S == 'X':
                 cpuXO = 'X'
@@ -436,6 +580,16 @@ def startMedGame():
             #Scans for a winner every move made, updates score and anounces a winner 
             # or stalemate while displaying the current board 
             def winner():
+               """
+               This function determines whether someone has one the game. After each turn the board is scanned for
+               a winner and the score is upodated accordingly
+               Parameters
+               ----------
+               None
+               Returns
+               -------
+               None
+               """
                XO = ['X','O']
                XOmsg = ['X Wins!', 'O Wins!']
                XOcol = [0,2] 
@@ -488,8 +642,17 @@ def startMedGame():
                                    if won != 1:
                                        showinfo(message="Stalemate")
                                        TTTBRD()
-            #checks if cpu goes first and plays            
+                       
             def FRmed():
+                """
+                This function determines if the computer is playing first and if it is, completes a move
+                Parameters
+                ----------
+                None
+                Returns
+                -------
+                None
+                """
                 if cpu == 1:
                     g[1][1] = cpuXO
                     bu = Label(med, 
@@ -498,8 +661,17 @@ def startMedGame():
                                )
                     bu.grid(row=1, column=1)
                 switch()
-            #checks if there is a winner
+            
             def winCheck():
+                """
+                This function checks to see if there is a winner and makes the varible won global
+                Parameters 
+                ----------
+                None
+                Returns
+                -------
+                None
+                """
                 global won
                 won = 0
                 XO = ['X','O']
@@ -514,8 +686,19 @@ def startMedGame():
                          won = 1
                     if g[0][2] == XO[b] and g[1][1] == XO[b] and g[2][0] == XO[b]:
                         won = 1
-            #every cycle makes a play on the board if there is no winner.
+            
             def medmode():
+                """
+                This function is the logic behind the medium mode computers moves, every turn the function wincheck is called
+                and if there is no winer the computer makes a move using the instructions in the function
+                
+                Parameters
+                ----------
+                None
+                Returns
+                -------
+                None
+                """
                 global x
                 winCheck()
                 x = cpuXO
@@ -630,8 +813,17 @@ def startMedGame():
         O = Label(med,
                   text=player2Name)
         O.grid(row=4, column=2)
-        # Restart button 
+         
         def restart():
+            """
+            This function resests the game board and allows for a new game to begin
+            Parameters
+            ----------
+            None
+            Returns
+            -------
+            None
+            """
             TTTBRD()
             switch()    
         R = Button(med,
@@ -651,6 +843,16 @@ def startMedGame():
         med.mainloop()
 
 def startHardGame():
+        """
+        This function allows for a one player game on hard to be played. It creates the game board, checks for a winner, displays a
+        winning/draw message and has a restart button
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        None
+        """
     # CPU start variable
     global cpu
     # Sets initial move   
@@ -659,14 +861,33 @@ def startHardGame():
     x = S  
     # Sets and hold score
     XOscr = [0,0]
-    # Creates a new game
+    
     def switch():
+        """
+        This switches if it is the players turn or the computers to create a new game
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        None
+        """
         global x
         if x == 'X':
             x = "O"
         else:
-            x = 'X'       
+            x = 'X'
+            
     def TTTBRD():
+        """
+        This function sets the game board back to its deafult empty state and determines which icon is assigned to each player
+        Parameters
+        ----------
+        None
+        Returns 
+        -------
+        None
+        """
         #sets which player is which icon
         if cpu == 1 and S == 'X':
             cpuXO = 'X'
@@ -685,6 +906,16 @@ def startHardGame():
         #Scans for a winner every move made, updates score and anounces a winner 
         # or stalemate while displaying the current board 
         def winner():
+           """
+           This function determines whether someone has one the game. After each turn the board is scanned for
+           a winner and the score is upodated accordingly
+           Parameters
+           ----------
+           None
+           Returns
+           -------
+           None
+           """
            XO = ['X','O']
            XOmsg = ['X Wins!', 'O Wins!']
            XOcol = [0,2] 
@@ -737,8 +968,17 @@ def startHardGame():
                                if won != 1:
                                    showinfo(message="Stalemate")
                                    TTTBRD()
-        #checks if cpu goes first and plays            
+                  
         def FRhard():
+            """
+            This function determines if the computer is playing first and if it is, completes a move
+            Parameters
+            ----------
+            None
+            Returns
+            -------
+            None
+            """
             if cpu == 1:
                 g[0][0] = cpuXO
                 bu = Label(hard, 
@@ -747,8 +987,17 @@ def startHardGame():
                            )
                 bu.grid(row=0, column=0)
             switch()
-        #checks if there is a winner and updates the won value
+        
         def winCheck():
+            """
+            This function checks to see if there is a winner and makes the varible won global
+            Parameters 
+            ----------
+            None
+            Returns
+            -------
+            None
+            """
             global won
             won = 0
             XO = ['X','O']
@@ -763,8 +1012,18 @@ def startHardGame():
                      won = 1
                 if g[0][2] == XO[b] and g[1][1] == XO[b] and g[2][0] == XO[b]:
                     won = 1
-        #every cycle makes a play on the board if there is no winner.
+        
         def hardmode():
+            """
+            This function is the logic behind the hard mode computers moves, every turn the function wincheck is called
+            and if there is no winer the computer makes a move using the instructions in the function
+            Parameters
+            ----------
+            None
+            Returns
+            -------
+            None
+            """
             global x
             winCheck()
             x = cpuXO
@@ -1332,8 +1591,17 @@ def startHardGame():
     O = Label(hard,
               text=player2Name)
     O.grid(row=4, column=2)
-    # Restart button 
+    
     def restart():
+        """
+        This function resests the game board and allows for a new game to begin
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        None
+        """
         TTTBRD()
         switch()    
     R = Button(hard,
@@ -1354,6 +1622,15 @@ def startHardGame():
 
 
 def startGame():
+    """
+    This function starts the game and determines what type of game it is based on which buttons are selected
+    Parameters
+    ----------
+    None
+    Returns
+    -------
+    None
+    """
     global S
     global cpu
     global player1Name
@@ -1518,5 +1795,3 @@ startGameB.place(x=96,y=343)
 
 
 menu.mainloop()
-
-
