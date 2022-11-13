@@ -210,17 +210,17 @@ def startTwoPlayerGame():
                         global x
                         g[r2][c2] = x
                         if x == 'X':
-                            bu = Label(pvpCanvas, 
+                            bh = Label(pvpCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                            bu = Label(pvpCanvas, #sets the label for X
                                     image = xPic,
-                                    bd = 0
-                                    )
-                            bu.grid(row=r2, column=c2)
+                                    bd = 0,)
                         if x == 'O':
-                            bu = Label(pvpCanvas, 
+                            bh = Label(pvpCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                            bu = Label(pvpCanvas, #sets the label for O
                                     image = oPic,
-                                    bd = 0
-                                    )
-                            bu.grid(row=r2, column=c2)
+                                    bd = 0)
+                        bh.grid(row = r2, column = c2)
+                        bu.grid(row=r2, column=c2)#places both labels on clicked button
                         if x == 'X':
                             x = "O"
                         else:
@@ -239,6 +239,7 @@ def startTwoPlayerGame():
 
         pvp = Toplevel()
         pvp.title('PvP')
+        pvp.attributes("-topmost", True)
         pvpCanvas = Canvas(pvp, highlightthickness=0, bg = '#262626')
         pvpCanvas.pack()
         TTTBRD()
@@ -448,6 +449,8 @@ def startEasyGame():
                 """
                 if cpu == 1 and S == 'X':
                     g[0][0] = cpuXO
+                    bh = Label(easyCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                    bh.grid(row = 0, column = 0)
                     bu = Label(easyCanvas, 
                                image = xPic,
                                bd = 0,
@@ -457,6 +460,8 @@ def startEasyGame():
                     bu.grid(row=0, column=0)
                 if cpu == 1 and S == 'O':
                     g[0][0] = cpuXO
+                    bh = Label(easyCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                    bh.grid(row = 0, column = 0)
                     bu = Label(easyCanvas, 
                                image = oPic,
                                bd = 0,
@@ -512,17 +517,19 @@ def startEasyGame():
                             if g[r][c] == '':
                                 g[r][c] = x
                                 if S == 'O' and cpu == 1 or S == 'X' and cpu == 0:
-                                    bu = Label(easyCanvas, 
+                                    bh = Label(easyCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                                    bh.grid(row = r, column = c)
+                                    bu = Label(easyCanvas, #label for the O
                                             image = oPic,
                                             bd = 0,
-                                            activebackground= '#262626'
-                                            )
+                                            activebackground= '#262626')
                                 if S == 'X' and cpu == 1 or S == 'O' and cpu == 0:
-                                    bu = Label(easyCanvas, 
+                                    bh = Label(easyCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                                    bh.grid(row = r, column = c)
+                                    bu = Label(easyCanvas, #label for the X
                                             image = xPic,
                                             bd = 0, 
-                                            activebackground= '#262626'
-                                            )                     
+                                            activebackground= '#262626')                     
                                 bu.grid(row=r, column=c)
                                 winner()
                                 return
@@ -536,17 +543,17 @@ def startEasyGame():
                         x = playerXO
                         g[r2][c2] = x
                         if S == 'O' and cpu == 0 or S == 'X' and cpu == 1:
+                            bh = Label(easyCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
                             bu = Label(easyCanvas, 
                                     image = oPic,
-                                    bd = 0
-                                    )
-                            bu.grid(row=r2, column=c2)
+                                    bd = 0)
                         if S == 'X' and cpu == 0 or S == 'O' and cpu == 1:
+                            bh = Label(easyCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
                             bu = Label(easyCanvas, 
                                     image = xPic,
-                                    bd = 0
-                                    )
-                            bu.grid(row=r2, column=c2)
+                                    bd = 0)
+                        bh.grid(row = r2, column = c2)
+                        bu.grid(row=r2, column=c2)
                         switch()
                         winner()
                         easymode()
@@ -563,6 +570,7 @@ def startEasyGame():
         #creates a window and starts a board
         easy = Toplevel()
         easy.title('Easy')
+        easy.attributes("-topmost", True)
         easyCanvas = Canvas(easy, highlightthickness=0, bg = '#262626')
         easyCanvas.pack()
         TTTBRD()
@@ -787,17 +795,19 @@ def startMedGame():
                 """
                 if cpu == 1 and S == 'X':
                     g[1][1] = cpuXO
+                    bh = Label(medCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                    bh.grid(row = 1, column = 1)
                     bu = Label(medCanvas, 
                                image = xPic,
-                               bg = '#424242'
-                               )
+                               bg = '#424242')
                     bu.grid(row=1, column=1)
                 if cpu == 1 and S == 'O':
                     g[1][1] = cpuXO
+                    bh = Label(medCanvas, image = boardBox, bd = 0, bg = '#262626') # places a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                    bh.grid(row = 1, column = 1)
                     bu = Label(medCanvas, 
                                image = oPic,
-                               bg = '#424242'
-                               )
+                               bg = '#424242')
                     bu.grid(row=1, column=1)   
                 switch()
             
@@ -829,7 +839,7 @@ def startMedGame():
             def medmode():
                 """
                 This function is the logic behind the medium mode computers moves, every turn the function wincheck is called
-                and if there is no winer the computer makes a move using the instructions in the function
+                and if there is no winner the computer makes a move using the instructions in the function
                 
                 Parameters
                 ----------
@@ -843,62 +853,82 @@ def startMedGame():
                 x = cpuXO
                 if won != 1:
                     if S == 'O' and cpu == 0 or S == 'X' and cpu == 1:
-                        bu = Label(medCanvas, image = xPic, bg = '#424242')
+                        bh = Label(medCanvas, image = boardBox, bd = 0, bg = '#262626') # sets a copy of the boardBox to prevent clicking the same button and placing a symbol over another
+                        bu = Label(medCanvas, image = xPic, bg = '#424242') # sets the X label
                         if g[1][1] == '':
                             g[1][1] = x
+                            bh.grid(row=1, column=1)
                             bu.grid(row=1, column=1)
                         elif g[0][0] == '':
                             g[0][0] = x
+                            bh.grid(row=0, column=0)
                             bu.grid(row=0, column=0)
                         elif g[2][2] == '':
                             g[2][2] = x
+                            bh.grid(row=2, column=2)
                             bu.grid(row=2, column=2)
                         elif g[0][2] == '':
                             g[0][2] = x
+                            bh.grid(row=0, column=2)
                             bu.grid(row=0, column=2)
                         elif g[0][1] == '':
                             g[0][1] = x
+                            bh.grid(row=0, column=1)
                             bu.grid(row=0, column=1)
                         elif g[1][2] == '':
                             g[1][2] = x
+                            bh.grid(row=1, column=2)
                             bu.grid(row=1, column=2)
                         elif g[2][0] == '':
                             g[2][0] = x
+                            bh.grid(row=2, column=0)
                             bu.grid(row=2, column=0)
                         elif g[1][0] == '':
                             g[1][0] = x
+                            bu.grid(row=1, column=0)
                             bu.grid(row=1, column=0)
                         elif g[2][1] == '':
                             g[2][1] = x
                             bu.grid(row=2, column=1)
+                            bu.grid(row=2, column=1)
                     if S == 'X' and cpu == 0 or S == 'O' and cpu == 1:
+                        bh = Label(medCanvas, image = boardBox, bd = 0, bg = '#262626') # sets a copy of the boardBox to prevent clicking the same button and placing a symbol over another
                         bu = Label(medCanvas, image = oPic, bg = '#424242')
                         if g[1][1] == '':
                             g[1][1] = x 
+                            bh.grid(row=1, column=1)
                             bu.grid(row=1, column=1)
                         elif g[0][0] == '':
                             g[0][0] = x
+                            bh.grid(row=0, column=0)
                             bu.grid(row=0, column=0)
                         elif g[2][2] == '':
                             g[2][2] = x
+                            bh.grid(row=2, column=2)
                             bu.grid(row=2, column=2)
                         elif g[0][2] == '':
                             g[0][2] = x
+                            bh.grid(row=0, column=2)
                             bu.grid(row=0, column=2)
                         elif g[0][1] == '':
                             g[0][1] = x
+                            bh.grid(row=0, column=1)
                             bu.grid(row=0, column=1)
                         elif g[1][2] == '':
                             g[1][2] = x
+                            bh.grid(row=1, column=2)
                             bu.grid(row=1, column=2)
                         elif g[2][0] == '':
                             g[2][0] = x
+                            bh.grid(row=2, column=0)
                             bu.grid(row=2, column=0)
                         elif g[1][0] == '':
                             g[1][0] = x
+                            bh.grid(row=1, column=0)
                             bu.grid(row=1, column=0)
                         elif g[2][1] == '':
                             g[2][1] = x
+                            bh.grid(row=2, column=1)
                             bu.grid(row=2, column=1)
                         winner()
 
@@ -911,9 +941,12 @@ def startMedGame():
                         x = playerXO
                         g[r2][c2] = x                       
                         if S == 'X' and cpu == 0 or S == 'O' and cpu == 1:
+                            bh = Label(medCanvas, image = boardBox, bd = 0, bg = '#262626') 
                             bu = Label(medCanvas, image = xPic, bg = '#424242')
                         if S == 'X' and cpu == 1 or S == 'O' and cpu == 0:
+                            bh = Label(medCanvas, image = boardBox, bd = 0, bg = '#262626') 
                             bu = Label(medCanvas, image = oPic, bg = '#424242')
+                        bh.grid(row=r2, column=c2)
                         bu.grid(row=r2, column=c2)
                         switch()
                         winner()
@@ -931,6 +964,7 @@ def startMedGame():
         #creates a window and starts a board
         med = Toplevel()
         med.title('Medium')
+        med.attributes("-topmost", True)
         medCanvas = Canvas(med, highlightthickness=0, bg = '#262626' )
         medCanvas.pack()
         TTTBRD()
@@ -1145,12 +1179,14 @@ def startHardGame():
             """
             if cpu == 1 and S == 'X':
                 g[0][0] = cpuXO
-                bu = Label(hardCanvas, image = xPic, bg = '#424242')
-                bu.grid(row=0, column=0)
+                bh = Label(hardCanvas, image = boardBox, bd = 0, bg = '#262626') # sets the box label to prevent clicking same one multiple times
+                bu = Label(hardCanvas, image = xPic, bg = '#424242') # sets the label to X
             if cpu == 1 and S == 'O':
                 g[0][0] = cpuXO
+                bh = Label(hardCanvas, image = boardBox, bd = 0, bg = '#262626')
                 bu = Label(hardCanvas, image = oPic, bg = '#424242')
-                bu.grid(row=0, column=0)
+            bh.grid(row=0, column=0) #places both labels in the first spot
+            bu.grid(row=0, column=0)
             switch()
         
         def winCheck():
@@ -1194,299 +1230,359 @@ def startHardGame():
             x = cpuXO
             if won != 1:
                 if S == 'X' and cpu == 1 or S == 'O' and cpu == 0:
+                    bh = Label(hardCanvas, image = boardBox, bd = 0, bg = '#262626') 
                     bu = Label(hardCanvas, image = xPic, bg = '#424242')
                 if S == 'O' and cpu == 1 or S == 'X' and cpu == 0:
+                    bh = Label(hardCanvas, image = boardBox, bd = 0, bg = '#262626') 
                     bu = Label(hardCanvas, image = oPic, bg = '#424242')
                     #check for possible win, if so, place to block
                 if g[0][0] == x and g[0][1] == x and g[0][2] == '':
                     g[0][2] = x
+                    bh.grid(row=0, column=2)
                     bu.grid(row=0, column=2)
                     winner()
                     return
                 if g[0][2] == x and g[0][1] == x and g[0][0] == '':
                     g[0][0] = x
+                    bh.grid(row=0, column=0)
                     bu.grid(row=0, column=0)
                     winner()
                     return
                 if g[0][0] == x and g[0][2] == x and g[0][1] == '':
                     g[0][1] = x
+                    bh.grid(row=0, column=1)
                     bu.grid(row=0, column=1)
                     winner()
                     return
                 if g[1][0] == x and g[1][1] == x and g[1][2] == '':
                     g[1][2] = x
+                    bh.grid(row=1, column=2)
                     bu.grid(row=1, column=2)
                     winner()
                     return
                 if g[1][2] == x and g[1][1] == x and g[1][0] == '':
                     g[1][0] = x
+                    bh.grid(row=1, column=0)
                     bu.grid(row=1, column=0)
                     winner()
                     return
                 if g[1][0] == x and g[1][2] == x and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[2][0] == x and g[2][1] == x and g[2][2] == '':
                     g[2][2] = x
+                    bh.grid(row=2, column=2)
                     bu.grid(row=2, column=2)
                     winner()
                     return
                 if g[2][2] == x and g[2][1] == x and g[2][0] == '':
                     g[2][0] = x
+                    bh.grid(row=2, column=0)
                     bu.grid(row=2, column=0)
                     winner()
                     return
                 if g[2][0] == x and g[2][2] == x and g[2][1] == '':
                     g[2][1] = x
+                    bh.grid(row=2, column=1)
                     bu.grid(row=2, column=1)
                     winner()
                     return
                 if g[0][0] == x and g[1][0] == x and g[2][0] == '':
                     g[2][0] = x
+                    bh.grid(row=2, column=0)
                     bu.grid(row=2, column=0)
                     winner()
                     return
                 if g[2][0] == x and g[1][0] == x and g[0][0] == '':
                     g[0][0] = x
+                    bh.grid(row=0, column=0)
                     bu.grid(row=0, column=0)
                     winner()
                     return
                 if g[0][0] == x and g[2][0] == x and g[1][0] == '':
                     g[1][0] = x
+                    bh.grid(row=1, column=0)
                     bu.grid(row=1, column=0)
                     winner()
                     return
                 if g[0][0] == x and g[2][2] == x and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[0][1] == x and g[1][1] == x and g[2][1] == '':
                     g[2][1] = x
+                    bh.grid(row=2, column=1)
                     bu.grid(row=2, column=1)
                     winner()
                     return
                 if g[1][2] == x and g[1][1] == x and g[0][1] == '':
                     g[0][1] = x
+                    bh.grid(row=0, column=1)
                     bu.grid(row=0, column=1)
                     winner()
                     return
                 if g[0][1] == x and g[2][1] == x and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[0][2] == x and g[1][2] == x and g[2][2] == '':
                     g[2][2] = x
+                    bh.grid(row=2, column=2)
                     bu.grid(row=2, column=2)
                     winner()
                     return
                 if g[2][2] == x and g[1][2] == x and g[0][2] == '':
                     g[0][2] = x
+                    bh.grid(row=0, column=2)
                     bu.grid(row=0, column=2)
                     winner()
                     return
                 if g[2][2] == x and g[0][2] == x and g[1][2] == '':
                     g[1][2] = x
+                    bh.grid(row=1, column=2)
                     bu.grid(row=1, column=2)
                     winner()
                     return
                 if g[0][0] == x and g[2][2] == x and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[1][1] == x and g[2][2] == x and g[0][0] == '':
                     g[0][0] = x
+                    bh.grid(row=0, column=0)
                     bu.grid(row=0, column=0)
                     winner()
                     return
                 if g[0][0] == x and g[1][1] == x and g[2][2] == '':
                     g[2][2] = x
+                    bh.grid(row=2, column=2)
                     bu.grid(row=2, column=2)
                     winner()
                     return
                 if g[0][2] == x and g[2][0] == x and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[1][1] == x and g[2][0] == x and g[0][2] == '':
                     g[0][2] = x
+                    bh.grid(row=0, column=2)
                     bu.grid(row=0, column=2)
                     winner()
                     return
                 if g[0][2] == x and g[1][1] == x and g[2][0] == '':
                     g[2][0] = x
+                    bh.grid(row=2, column=0)
                     bu.grid(row=2, column=0)
                     winner()
                     return
                 #Checks for a block move 
                 if g[0][0] == playerXO and g[0][1] == playerXO and g[0][2] == '':
                     g[0][2] = x
+                    bh.grid(row=0, column=2)
                     bu.grid(row=0, column=2)
                     winner()
                     return
                 if g[0][2] == playerXO and g[0][1] == playerXO and g[0][0] == '':
                     g[0][0] = x
+                    bh.grid(row=0, column=0)
                     bu.grid(row=0, column=0)
                     winner()
                     return
                 if g[0][0] == playerXO and g[0][2] == playerXO and g[0][1] == '':
                     g[0][1] = x
+                    bh.grid(row=0, column=1)
                     bu.grid(row=0, column=1)
                     winner()
                     return
                 if g[1][0] == playerXO and g[1][1] == playerXO and g[1][2] == '':
                     g[1][2] = x
+                    bh.grid(row=1, column=2)
                     bu.grid(row=1, column=2)
                     winner()
                     return
                 if g[1][2] == playerXO and g[1][1] == playerXO and g[1][0] == '':
                     g[1][0] = x
+                    bh.grid(row=1, column=0)
                     bu.grid(row=1, column=0)
                     winner()
                     return
                 if g[1][0] == playerXO and g[1][2] == playerXO and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[2][0] == playerXO and g[2][1] == playerXO and g[2][2] == '':
                     g[2][2] = x
+                    bh.grid(row=2, column=2)
                     bu.grid(row=2, column=2)
                     winner()
                     return
                 if g[2][2] == playerXO and g[2][1] == playerXO and g[2][1] == '':
                     g[2][0] = x
+                    bh.grid(row=2, column=0)
                     bu.grid(row=2, column=0)
                     winner()
                     return
                 if g[2][0] == playerXO and g[2][2] == playerXO and g[2][1] == '':
                     g[2][1] = x
+                    bh.grid(row=2, column=1)
                     bu.grid(row=2, column=1)
                     winner()
                     return
                 if g[0][0] == playerXO and g[1][0] == playerXO and g[2][0] == '':
                     g[2][0] = x
+                    bh.grid(row=2, column=0)
                     bu.grid(row=2, column=0)
                     winner()
                     return
                 if g[2][0] == playerXO and g[1][0] == playerXO and g[0][0] == '':
                     g[0][0] = x
+                    bh.grid(row=0, column=0)
                     bu.grid(row=0, column=0)
                     winner()
                     return
                 if g[0][0] == playerXO and g[2][0] == playerXO and g[1][0] == '':
                     g[1][0] = x
+                    bh.grid(row=1, column=0)
                     bu.grid(row=1, column=0)
                     winner()
                     return
                 if g[0][1] == playerXO and g[1][1] == playerXO and g[2][1] == '':
                     g[2][1] = x
+                    bh.grid(row=2, column=1)
                     bu.grid(row=2, column=1)
                     winner()
                     return
                 if g[2][1] == playerXO and g[1][1] == playerXO and g[0][1] == '':
                     g[0][1] = x
+                    bh.grid(row=0, column=1)
                     bu.grid(row=0, column=1)
                     winner()
                     return
                 if g[0][1] == playerXO and g[2][1] == playerXO and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[0][2] == playerXO and g[1][2] == playerXO and g[2][2] == '':
                     g[2][2] = x
+                    bh.grid(row=2, column=2)
                     bu.grid(row=2, column=2)
                     winner()
                     return
                 if g[2][2] == playerXO and g[1][2] == playerXO and g[0][2] == '':
                     g[0][2] = x
+                    bh.grid(row=0, column=2)
                     bu.grid(row=0, column=2)
                     winner()
                     return
                 if g[2][2] == playerXO and g[0][2] == playerXO and g[1][2] == '':
                     g[1][2] = x
+                    bh.grid(row=1, column=2)
                     bu.grid(row=1, column=2)
                     winner()
                     return
                 if g[0][0] == playerXO and g[2][2] == playerXO and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[1][1] == playerXO and g[2][2] == playerXO and g[0][0] == '':
                     g[0][0] = x
+                    bh.grid(row=0, column=0)
                     bu.grid(row=0, column=0)
                     winner()
                     return
                 if g[0][0] == playerXO and g[1][1] == playerXO and g[2][2] == '':
                     g[2][2] = x
+                    bh.grid(row=2, column=2)
                     bu.grid(row=2, column=2)
                     winner()
                     return
                 if g[0][2] == playerXO and g[2][0] == playerXO and g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
                 if g[1][1] == playerXO and g[2][0] == playerXO and g[0][2] == '':
                     g[0][2] = x
+                    bh.grid(row=0, column=2)
                     bu.grid(row=0, column=2)
                     winner()
                     return
                 if g[0][2] == playerXO and g[1][1] == playerXO and g[2][0] == '':
                     g[2][0] = x
+                    bh.grid(row=2, column=0)
                     bu.grid(row=2, column=0)
                     winner()
                     return
                 #Move order 
                 if g[0][0] == '' and g[2][2] == '':
                     g[0][0] = x
+                    bh.grid(row=0, column=0)
                     bu.grid(row=0, column=0)
                     winner()
                     return
                 if g[2][2] == '' and g[0][0] == x:
                     g[2][2] = x
+                    bh.grid(row=2, column=2)
                     bu.grid(row=2, column=2)
                     winner()
                     return
                 if g[0][2] == '':
                     g[0][2] = x
+                    bh.grid(row=0, column=2)
                     bu.grid(row=0, column=2)
                     winner()
                     return
                 if g[2][0] == '':
                     g[2][0] = x
+                    bh.grid(row=2, column=0)
                     bu.grid(row=2, column=0)
                     winner()
                     return
                 if g[0][1] == '':
                     g[0][1] = x
+                    bh.grid(row=0, column=1)
                     bu.grid(row=0, column=1)
                     winner()
                     return
                 if g[1][2] == '':
                     g[1][2] = x
+                    bh.grid(row=1, column=2)
                     bu.grid(row=1, column=2)
                     winner()
                     return
                 if g[1][0] == '':
                     g[1][0] = x
+                    bh.grid(row=1, column=0)
                     bu.grid(row=1, column=0)
                     winner()
                     return
                 if g[2][1] == '':
                     g[2][1] = x
+                    bh.grid(row=2, column=1)
                     bu.grid(row=2, column=1)
                     winner()
                     return
                 if g[1][1] == '':
                     g[1][1] = x
+                    bh.grid(row=1, column=1)
                     bu.grid(row=1, column=1)
                     winner()
                     return
@@ -1500,9 +1596,12 @@ def startHardGame():
                     x = playerXO
                     g[r2][c2] = x
                     if S == 'X' and cpu == 0 or S == 'O' and cpu == 1:
-                        bu = Label(hardCanvas, image = xPic, bd = 0)
+                        bh = Label(hardCanvas, image = boardBox, bd = 0, bg = '#262626') # sets the box label to prevent clicking same one multiple times
+                        bu = Label(hardCanvas, image = xPic, bd = 0) # sets the label to X
                     if S == 'O' and cpu == 0 or S == 'X' and cpu == 1:
-                        bu = Label(hardCanvas, image = oPic, bd = 0)
+                        bh = Label(hardCanvas, image = boardBox, bd = 0, bg = '#262626')
+                        bu = Label(hardCanvas, image = oPic, bd = 0) # sets the label to O
+                    bh.grid(row=r2, column=c2)# places both labels on clicked button
                     bu.grid(row=r2, column=c2)
                     switch()
                     winner()
@@ -1514,6 +1613,7 @@ def startHardGame():
     #creates a window and starts a board
     hard = Toplevel()
     hard.title('Hard')
+    hard.attributes("-topmost", True)
     hardCanvas = Canvas(hard, bg = '#262626', bd = 0, highlightthickness=0)
     hardCanvas.pack()
     TTTBRD()
@@ -1627,10 +1727,10 @@ playerOneCharValue.set('X')
 
 playerOneCharR1 =Radiobutton(playerOneCharFrame, image = xPic,
                              variable = playerOneCharValue,
-                             value = 'X', bg = '#424242',)
+                             value = 'X', bg = '#424242', activebackground= '#424242')
 playerOneCharR2 =Radiobutton(playerOneCharFrame, image = oPic,
                              variable = playerOneCharValue,
-                             value = 'O', bg = '#424242',)
+                             value = 'O', bg = '#424242', activebackground= '#424242')
 playerOneCharR1.pack()
 playerOneCharR2.pack()
 
@@ -1646,10 +1746,10 @@ playerTwoCharValue.set(1)
 
 playerTwoCharR1 =Radiobutton(playerTwoCharFrame, image = computerStartsPic,
                              variable = playerTwoCharValue,
-                             value = 1, command=playerTwoX, bg = '#424242')
+                             value = 1, command=playerTwoX, bg = '#424242', activebackground= '#424242')
 playerTwoCharR2 =Radiobutton(playerTwoCharFrame, image = playerStartsPic,
                              variable = playerTwoCharValue,
-                             value = 0, command = playerTwoO, bg = '#424242')
+                             value = 0, command = playerTwoO, bg = '#424242', activebackground= '#424242')
 playerTwoCharR1.pack()
 playerTwoCharR2.pack()
 
@@ -1665,10 +1765,10 @@ gameModeValue.set('One Player')
 
 gameModeR1 = Radiobutton(gameModeFrame, image = onePlayerBox,
                          variable = gameModeValue, value = 'One Player',
-                         command = onePlayerGame, bg = '#424242')
+                         command = onePlayerGame, bg = '#424242', activebackground= '#424242')
 gameModeR2 = Radiobutton(gameModeFrame, image = twoPlayerBox,
                          variable = gameModeValue, value = 'Two Player',
-                         command = twoPlayerGame, bg = '#424242')
+                         command = twoPlayerGame, bg = '#424242', activebackground= '#424242')
 gameModeR1.pack()
 gameModeR2.pack()
 
@@ -1684,13 +1784,13 @@ difficultyValue.set('Easy')
 
 difficultyR1=Radiobutton(difficultyFrame, image = easyBox,
                          variable = difficultyValue,
-                         value = 'Easy', bg = '#424242')
+                         value = 'Easy', bg = '#424242', activebackground= '#424242')
 difficultyR2=Radiobutton(difficultyFrame, image = mediumBox,
                          variable = difficultyValue,
-                         value = 'Medium', bg = '#424242')
+                         value = 'Medium', bg = '#424242', activebackground= '#424242')
 difficultyR3=Radiobutton(difficultyFrame, image = hardBox,
                          variable = difficultyValue,
-                         value = 'Hard', bg = '#424242')
+                         value = 'Hard', bg = '#424242', activebackground= '#424242')
 difficultyR1.pack()
 difficultyR2.pack()
 difficultyR3.pack()
