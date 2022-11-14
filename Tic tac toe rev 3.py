@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """
+This file contains a menu for Tik Tac Toe and four diffrent game options
+by Noah Boman, Kristian Berg, Ben Stollery, Matt Beaudette
 Created on Wed Oct 12 16:02:55 2022
 """
 from tkinter import Tk, Canvas, BOTH, PhotoImage, Label, Frame, Toplevel
