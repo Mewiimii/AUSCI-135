@@ -1670,13 +1670,12 @@ def startGame():
     global cpu
     global player1Name
     global player2Name
-    if playerOneCharValue.get() == 'X':
-        if playerTwoCharValue.get() == '1':
-            player1Name = nameOne.get()
-            player2Name = nameTwo.get()
-        else:
-            player1Name = nameOne.get()
-            player2Name = nameTwo.get()
+    if playerTwoCharValue.get() == '1':
+        player1Name = nameOne.get()
+        player2Name = nameTwo.get()
+    else:
+        player1Name = nameOne.get()
+        player2Name = nameTwo.get()
     if gameModeValue.get() == 'Two Player':
         S = playerOneCharValue.get()
         startTwoPlayerGame()
